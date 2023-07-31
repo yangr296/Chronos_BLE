@@ -26,9 +26,20 @@ class BLEMessage:
         self.p4 = p4
         self.b1, self.b2, self.b3, self.b4 = '', '', '', ''
         self.encode()
-        
-        
        
+    def test(self):
+        array = [ord(self.b1), ord(self.b2), ord(self.b3), ord(self.b4)] 
+        return bytearray(array)
+    def test_1(self):
+        return self.b1 +self.b2 + self.b3 + self.b4
+    def get_encoded(self):
+        # hex(ord(self.b1)) + hex(ord(self.b2)) + hex(ord(self.b3)) + hex(ord(self.b4))
+        string = hex(self.enc_message)[2:]
+        print(string)
+        if(len(string) == 7):
+            string = '0' + string
+        return string
+   
     def encode(self):
         self.encode_p1()
         self.encode_p2()
