@@ -537,16 +537,55 @@ static void bt_receive_cb(struct bt_conn *conn, const uint8_t *const data,
 		
 		// NULL terminate the string 
 		length = tx->len;
+		printk("length is %i\n", length);
 		out[length] = NULL;
 
+		printk("int values\n");
+		printk("%i\n", out[0]);
+		printk("%i\n", out[1]);
+		printk("%i\n", out[2]);
+		printk("%i\n", out[3]);
+		printk("%i\n", out[4]);
+
+		printk("char values\n");
+		printk("%c\n", out[0]);
+		printk("%c\n", out[1]);
+		printk("%c\n", out[2]);
+		printk("%c\n", out[3]);
+		printk("%c\n", out[4]);
+		
+		printk("hexa\n");
+		printk("%x", out);
+
+		/*
+		int p1;
+		int p2;
+		int p3;
+		char b1[2] = {out[0], out[1]};
+		printk("%s\n", b1);
+		char b2[2] = {out[2], out[3]};
+		printk("%s\n", b2);
+		char b3[2] = {out[4], out[5]};
+		printk("%s\n", b3);
+		char b4[2] = {out[6], out[7]};
+		printk("%s\n", b4);
+
+		p1 = (int)strtol(b1, NULL, 16) * 256 + (int)strtol(b2, NULL, 16);
+		printk("%i\n", p1);
+		
+		p2 = (int)strtol(b3, NULL, 16) * 2;
+		printk("%i\n", p2);
+
+		p3 = (int)strtol(b4, NULL, 16);
+		printk("%i\n", p3);
+		*/
+		
 		/* uncomment this to manually printk the message 
 		printk("--------------------\nprinting message:\n");
 		printk("%s", out);
 		*/
 		
-		if(out == (uint8_t)'c'){
-			printk("please enter the parameter\n");
-		}
+
 		
 		if (err) {
 			k_fifo_put(&fifo_uart_tx_data, tx);
