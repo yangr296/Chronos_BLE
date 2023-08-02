@@ -27,18 +27,9 @@ class BLEMessage:
         self.b1, self.b2, self.b3, self.b4 = '', '', '', ''
         self.encode()
        
-    def test(self):
-        array = [ord(self.b1), ord(self.b2), ord(self.b3), ord(self.b4)] 
-        return bytearray(array)
-    def test_1(self):
-        return self.b1 +self.b2 + self.b3 + self.b4
     def get_encoded(self):
-        # hex(ord(self.b1)) + hex(ord(self.b2)) + hex(ord(self.b3)) + hex(ord(self.b4))
-        string = hex(self.enc_message)[2:]
-        print(string)
-        if(len(string) == 7):
-            string = '0' + string
-        return string
+        bytes = self.enc_message.to_bytes(4, byteorder='big')
+        return bytes
    
     def encode(self):
         self.encode_p1()
@@ -95,18 +86,6 @@ class BLEMessage:
         print("b1 = %i, b2 = %i" %(upper, lower))
         self.b1 = chr(upper)
         self.b2 = chr(lower)
-        
-        """
-        # convert int to binary string
-        p1_binary = bin(self.p1)[1:]
-        p1_binary = '{:0>16}'.format(p1_binary[1:])
-        # divide into the first byte and second byte
-        p1_b1 = p1_binary[:8] 
-        p1_b2 = p1_binary[8:]
-        # convert strings back to int and then to one byte chr
-        self.b1 = chr(int(p1_b1, 2))
-        self.b2 = chr(int(p1_b2, 2))
-        """
         
     # not accouting for the most significant bit 
     def print_param(self):
