@@ -64,14 +64,32 @@ static const struct device *uart = DEVICE_DT_GET(DT_CHOSEN(nordic_nus_uart));
 static struct k_work_delayable uart_work;
 
 /* Declare the struct of the data item of the FIFOs */
-
-
-
 struct uart_data_t {
 	void *fifo_reserved;
 	uint8_t data[CONFIG_BT_NUS_UART_BUFFER_SIZE]; // defined in Kconfig
 	uint16_t len;
 };
+
+typedef struct{
+    short stim_amp;
+    short stim_pw;
+    char stim_freq;
+    char stim_status;
+}message;
+
+message* decode(char b1, char b2, char b3, char b4){
+    message *my_message = k_malloc(sizeof(message));
+
+    char amp_mask = 0x1F;
+    char status_mask = 0xE0;
+
+    my_message->stim_amp = (b1 & amp_mask) * 256 + b2;
+    my_message->stim_pw = b3 * 2;
+    my_message->stim_freq = b4;
+    my_message->stim_status = ((b1 & status_mask) >> 7);
+
+    return my_message;
+}
 
 /* Declare the FIFOs */
 static K_FIFO_DEFINE(fifo_uart_tx_data); 
@@ -347,14 +365,12 @@ static void connected(struct bt_conn *conn, uint8_t err)
    	return;
 	}
 
-	char *menu = "enter c if you wish to change the parameters\n--------------------\n";
 	double connection_interval = info.le.interval*1.25; // in ms
 	uint16_t supervision_timeout = info.le.timeout*10; // in ms
 
 	bt_addr_le_to_str(bt_conn_get_dst(conn), addr, sizeof(addr));
 	LOG_INF("Connected %s", addr);
 	printk("--------------------\nbuffer size %i, connection interval %.2fms, timeout %ims, latency %i\n", CONFIG_BT_NUS_UART_BUFFER_SIZE, connection_interval, supervision_timeout, info.le.latency);
-	printk(menu);
 
 	current_conn = bt_conn_ref(conn);
 
@@ -498,7 +514,10 @@ static void bt_receive_cb(struct bt_conn *conn, const uint8_t *const data,
 
 	for (uint16_t pos = 0; pos != len;) {
 		struct uart_data_t *tx = k_malloc(sizeof(*tx));
-
+		// clear mem
+		*tx->data = 0;
+		// printk("pos is %i, len is %i", pos, len);
+		
 		if (!tx) {
 			LOG_WRN("Not able to allocate UART send data buffer");
 			return;
@@ -514,7 +533,8 @@ static void bt_receive_cb(struct bt_conn *conn, const uint8_t *const data,
 		}
 
 		memcpy(tx->data, &data[pos], tx->len);
-
+		// printk("from tx->data: %i\n", tx->data);
+		// printk("from data[pos]: %i\n", data[pos]);
 		pos += tx->len;
 
 		/* Append the LF character when the CR character triggered
@@ -525,68 +545,33 @@ static void bt_receive_cb(struct bt_conn *conn, const uint8_t *const data,
 			tx->len++;
 		}
         /* Forward the data received over Bluetooth LE to the UART peripheral */
-		
 		err = uart_tx(uart, tx->data, tx->len, SYS_FOREVER_MS);
-		
-		
 		
 		// copy user input over to a uint8[]
 		memcpy(out, &(tx->data), sizeof(tx->data));
-		
-		
-		
-		// NULL terminate the string 
+	
+		// NULL terminate the str
 		length = tx->len;
-		printk("length is %i\n", length);
+		// printk("length is %i\n", length);
 		out[length] = NULL;
-
+		/*
+		printk("%i\n", out);
 		printk("int values\n");
 		printk("%i\n", out[0]);
 		printk("%i\n", out[1]);
 		printk("%i\n", out[2]);
 		printk("%i\n", out[3]);
 		printk("%i\n", out[4]);
-
-		printk("char values\n");
-		printk("%c\n", out[0]);
-		printk("%c\n", out[1]);
-		printk("%c\n", out[2]);
-		printk("%c\n", out[3]);
-		printk("%c\n", out[4]);
-		
-		printk("hexa\n");
-		printk("%x", out);
-
-		/*
-		int p1;
-		int p2;
-		int p3;
-		char b1[2] = {out[0], out[1]};
-		printk("%s\n", b1);
-		char b2[2] = {out[2], out[3]};
-		printk("%s\n", b2);
-		char b3[2] = {out[4], out[5]};
-		printk("%s\n", b3);
-		char b4[2] = {out[6], out[7]};
-		printk("%s\n", b4);
-
-		p1 = (int)strtol(b1, NULL, 16) * 256 + (int)strtol(b2, NULL, 16);
-		printk("%i\n", p1);
-		
-		p2 = (int)strtol(b3, NULL, 16) * 2;
-		printk("%i\n", p2);
-
-		p3 = (int)strtol(b4, NULL, 16);
-		printk("%i\n", p3);
 		*/
-		
+	
+		message *my_message = decode(out[0], out[1], out[2], out[3]);
+		printk("StimAmp: %i, StimPW: %i, StimFQ: %i, StimStatus: %i\n", my_message->stim_amp, my_message->stim_pw, my_message->stim_freq, my_message->stim_status);
+		k_free(my_message);
+
 		/* uncomment this to manually printk the message 
 		printk("--------------------\nprinting message:\n");
 		printk("%s", out);
 		*/
-		
-
-		
 		if (err) {
 			k_fifo_put(&fifo_uart_tx_data, tx);
 		}
