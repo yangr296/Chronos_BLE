@@ -31,11 +31,11 @@ def write_UART_conn(my_connection: BLEConnection, my_message):
     service = my_connection[UARTService]
     service.write(my_message.encode('utf-8'))
 
-def write_UART_int(my_connection: BLEConnection, my_message):
+def write_UART_byte(my_connection: BLEConnection, my_message):
     if not(my_connection.connected):
         sys.exit("connection not active")
     service = my_connection[UARTService]
-    service.write(str(my_message).encode('utf-8'))
+    service.write(my_message)
     
 # write to UART by passing device name 
 def write_UART_name(device_name, my_message, my_timeout = 10, disconnect=True):
