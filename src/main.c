@@ -71,24 +71,22 @@ struct uart_data_t {
 };
 
 typedef struct{
-    short stim_amp;
-    short stim_pw;
-    char stim_freq;
-    char stim_status;
+    short *stim_amp;
+    short *stim_pw;
+    char *stim_freq;
+    char *stim_status;
 }message;
 
-message* decode(char b1, char b2, char b3, char b4){
-    message *my_message = k_malloc(sizeof(message));
+static message *my_message;
 
+void decode(char b1, char b2, char b3, char b4){
     char amp_mask = 0x1F;
     char status_mask = 0xE0;
 
-    my_message->stim_amp = (b1 & amp_mask) * 256 + b2;
-    my_message->stim_pw = b3 * 2;
-    my_message->stim_freq = b4;
-    my_message->stim_status = ((b1 & status_mask) >> 7);
-
-    return my_message;
+    *my_message->stim_amp = (b1 & amp_mask) * 256 + b2;
+    *my_message->stim_pw = b3 * 2;
+    *my_message->stim_freq = b4;
+    *my_message->stim_status = ((b1 & status_mask) >> 7);
 }
 
 /* Declare the FIFOs */
@@ -533,8 +531,6 @@ static void bt_receive_cb(struct bt_conn *conn, const uint8_t *const data,
 		}
 
 		memcpy(tx->data, &data[pos], tx->len);
-		// printk("from tx->data: %i\n", tx->data);
-		// printk("from data[pos]: %i\n", data[pos]);
 		pos += tx->len;
 
 		/* Append the LF character when the CR character triggered
@@ -552,26 +548,12 @@ static void bt_receive_cb(struct bt_conn *conn, const uint8_t *const data,
 	
 		// NULL terminate the str
 		length = tx->len;
-		// printk("length is %i\n", length);
 		out[length] = NULL;
-		/*
-		printk("%i\n", out);
-		printk("int values\n");
-		printk("%i\n", out[0]);
-		printk("%i\n", out[1]);
-		printk("%i\n", out[2]);
-		printk("%i\n", out[3]);
-		printk("%i\n", out[4]);
-		*/
-	
-		message *my_message = decode(out[0], out[1], out[2], out[3]);
-		printk("StimAmp: %i, StimPW: %i, StimFQ: %i, StimStatus: %i\n", my_message->stim_amp, my_message->stim_pw, my_message->stim_freq, my_message->stim_status);
-		k_free(my_message);
 
-		/* uncomment this to manually printk the message 
-		printk("--------------------\nprinting message:\n");
-		printk("%s", out);
-		*/
+		decode(out[0], out[1], out[2], out[3]);
+		printk("StimAmp: %i, StimPW: %i, StimFQ: %i, StimStatus: %i\n",
+		 *my_message->stim_amp, *my_message->stim_pw, *my_message->stim_freq, *my_message->stim_status);
+		
 		if (err) {
 			k_fifo_put(&fifo_uart_tx_data, tx);
 		}
@@ -644,7 +626,27 @@ void main(void)
 {
 	int blink_status = 0;
 	int err = 0;
-	uint8_t *out = k_malloc(sizeof(uint8_t));
+	// uint8_t *out = k_malloc(sizeof(uint8_t));
+	my_message = k_malloc(sizeof(message*));
+	if(my_message == NULL){
+		LOG_ERR("K_MALLOC FAILED");
+	}
+	my_message->stim_amp = k_malloc(sizeof(short));
+	if(my_message->stim_amp == NULL){
+		LOG_ERR("K_MALLOC FAILED");
+	}
+	my_message->stim_pw = k_malloc(sizeof(short));
+	if(my_message->stim_pw == NULL){
+		LOG_ERR("K_MALLOC FAILED");
+	}
+	my_message->stim_freq = k_malloc(sizeof(char));
+	if(my_message->stim_freq == NULL){
+		LOG_ERR("K_MALLOC FAILED");
+	}
+	my_message->stim_status = k_malloc(sizeof(char));
+	if(my_message->stim_status == NULL){
+		LOG_ERR("K_MALLOC FAILED");
+	}
 
 	configure_gpio();
 	/* Initialize the UART Peripheral  */
