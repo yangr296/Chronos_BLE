@@ -39,26 +39,26 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/nrf/lib/bin/cmake_install.cmake")
+  include("I:/ipg/build/modules/nrf/lib/bin/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/nrf/lib/dk_buttons_and_leds/cmake_install.cmake")
+  include("I:/ipg/build/modules/nrf/lib/dk_buttons_and_leds/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/nrf/lib/multithreading_lock/cmake_install.cmake")
+  include("I:/ipg/build/modules/nrf/lib/multithreading_lock/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/nrf/lib/flash_patch/cmake_install.cmake")
+  include("I:/ipg/build/modules/nrf/lib/flash_patch/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/nrf/lib/fatal_error/cmake_install.cmake")
+  include("I:/ipg/build/modules/nrf/lib/fatal_error/cmake_install.cmake")
 endif()
 

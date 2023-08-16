@@ -245,7 +245,6 @@ I:/ipg/build_2/modules/nrf/drivers/mpsl/CMakeFiles/rebuild_cache.dir
 I:/ipg/build_2/modules/nrf/drivers/mpsl/clock_control/CMakeFiles/..__nrf__drivers__mpsl__clock_control.dir
 I:/ipg/build_2/modules/nrf/drivers/mpsl/clock_control/CMakeFiles/edit_cache.dir
 I:/ipg/build_2/modules/nrf/drivers/mpsl/clock_control/CMakeFiles/rebuild_cache.dir
-I:/ipg/build_2/modules/nrf/drivers/hw_cc310/CMakeFiles/..__nrf__drivers__hw_cc310.dir
 I:/ipg/build_2/modules/nrf/drivers/hw_cc310/CMakeFiles/edit_cache.dir
 I:/ipg/build_2/modules/nrf/drivers/hw_cc310/CMakeFiles/rebuild_cache.dir
 I:/ipg/build_2/modules/nrf/drivers/entropy/CMakeFiles/edit_cache.dir

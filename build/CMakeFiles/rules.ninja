@@ -768,7 +768,7 @@ rule C_STATIC_LIBRARY_LINKER__kernel_
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = C:\ncs\toolchains\31f4403e35\opt\bin\cmake.exe --regenerate-during-build -SC:\Users\tyang296\Nordic\ipg -BC:\Users\tyang296\Nordic\ipg\build
+  command = C:\ncs\toolchains\31f4403e35\opt\bin\cmake.exe --regenerate-during-build -SI:\ipg -BI:\ipg\build
   description = Re-running CMake...
   generator = 1
 

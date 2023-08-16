@@ -36,15 +36,8 @@
 // name, and level LOG 
 LOG_MODULE_REGISTER(IPG, LOG_LEVEL_INF);
 
-#define STACKSIZE CONFIG_BT_NUS_THREAD_STACK_SIZE
-#define PRIORITY 7
-
 #define DEVICE_NAME CONFIG_BT_DEVICE_NAME // defined in prj.conf
 #define DEVICE_NAME_LEN	(sizeof(DEVICE_NAME) - 1)
-
-// not really neede 
-#define RUN_STATUS_LED DK_LED1
-#define RUN_LED_BLINK_INTERVAL 1000
 
 #define CON_STATUS_LED DK_LED2
 
@@ -53,9 +46,6 @@ LOG_MODULE_REGISTER(IPG, LOG_LEVEL_INF);
 
 #define UART_WAIT_FOR_BUF_DELAY K_MSEC(50)
 #define UART_WAIT_FOR_RX CONFIG_BT_NUS_UART_RX_WAIT_TIME
-
-// only used in threading 
-static K_SEM_DEFINE(ble_init_ok, 0, 1);
 
 static struct bt_conn *current_conn;
 static struct bt_conn *auth_conn;
@@ -75,6 +65,7 @@ typedef struct{
     short *stim_pw;
     char *stim_freq;
     char *stim_status;
+	int *stim_period;
 }message;
 
 static message *my_message;
@@ -91,7 +82,6 @@ void decode(char b1, char b2, char b3, char b4){
 
 /* Declare the FIFOs */
 static K_FIFO_DEFINE(fifo_uart_tx_data); 
-static K_FIFO_DEFINE(fifo_uart_rx_data);
 
 static const struct bt_data ad[] = {
 	BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
@@ -196,20 +186,6 @@ static void uart_cb(const struct device *dev, struct uart_event *evt, void *user
 
 		break;
 
-	case UART_RX_BUF_RELEASED:
-		LOG_DBG("UART_RX_BUF_RELEASED");
-		buf = CONTAINER_OF(evt->data.rx_buf.buf, struct uart_data_t,
-				   data);
-
-		if (buf->len > 0) {
-			LOG_INF("---------------\npushing to fifo\n");
-			/* Push the data received from the UART peripheral into the fifo_uart_rx_data FIFO */
-			k_fifo_put(&fifo_uart_rx_data, buf);
-		} else {
-			k_free(buf);
-		}
-
-		break;
 
 	case UART_TX_ABORTED:
 		LOG_DBG("UART_TX_ABORTED");
@@ -498,7 +474,7 @@ static struct bt_conn_auth_info_cb conn_auth_info_callbacks;
 
 // this method defines teh receiving behavior 
 static void bt_receive_cb(struct bt_conn *conn, const uint8_t *const data,
-			  uint16_t len) // change priority 
+			  uint16_t len)
 {
 	int err;
 	char addr[BT_ADDR_LE_STR_LEN] = {0};
@@ -648,6 +624,11 @@ void main(void)
 		LOG_ERR("K_MALLOC FAILED");
 	}
 
+	my_message->stim_period = k_malloc(sizeof(int));
+	if(my_message->stim_period == NULL){
+		LOG_ERR("K_MALLOC FAILED");
+	}
+
 	configure_gpio();
 	/* Initialize the UART Peripheral  */
 	err = uart_init();
@@ -676,7 +657,7 @@ void main(void)
 
 	LOG_INF("Bluetooth initialized");
 
-	k_sem_give(&ble_init_ok);
+	// k_sem_give(&ble_init_ok);
 
 	if (IS_ENABLED(CONFIG_SETTINGS)) {
 		settings_load();
@@ -696,44 +677,6 @@ void main(void)
 	}
 
 	for (;;) {
-		dk_set_led(RUN_STATUS_LED, (++blink_status) % 2);
-		k_sleep(K_MSEC(RUN_LED_BLINK_INTERVAL));
+		k_sleep(K_MSEC(5000));
 	}
 }
-/* Define the thread function  */
-void ble_write_thread(void)
-{
-	/* Don't go any further until BLE is initialized */
-	k_sem_take(&ble_init_ok, K_FOREVER);
-	// printk("----------\nble_write_thread\n");
-
-	
-	for (;;) {
-		/* Wait indefinitely for data from the UART peripheral */
-		struct uart_data_t *buf = k_fifo_get(&fifo_uart_rx_data,
-						     K_FOREVER);
-
-		// store to string out 
-		// *out = buf->data;
-		printk("incoming message:\n");
-		// printk(*out);
-
-        /* Send data over Bluetooth LE to remote device(s) */
-		
-		/*
-		if (bt_nus_send(NULL, buf->data, buf->len)) {
-			LOG_WRN("Failed to send data over BLE connection");
-		}
-		*/
-		
-		
-		
-
-		k_free(buf);
-	}
-
-
-	
-}
-/* Create a dedicated thread for sending the data over Bluetooth LE. */
-K_THREAD_DEFINE(ble_write_thread_id, STACKSIZE, ble_write_thread, NULL, NULL, NULL, PRIORITY, 0, 0);

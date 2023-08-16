@@ -39,231 +39,231 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/zephyr/arch/cmake_install.cmake")
+  include("I:/ipg/build/zephyr/arch/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/zephyr/lib/cmake_install.cmake")
+  include("I:/ipg/build/zephyr/lib/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/zephyr/soc/arm/cmake_install.cmake")
+  include("I:/ipg/build/zephyr/soc/arm/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/zephyr/boards/cmake_install.cmake")
+  include("I:/ipg/build/zephyr/boards/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/zephyr/subsys/cmake_install.cmake")
+  include("I:/ipg/build/zephyr/subsys/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/zephyr/drivers/cmake_install.cmake")
+  include("I:/ipg/build/zephyr/drivers/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/nrf/cmake_install.cmake")
+  include("I:/ipg/build/modules/nrf/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/hostap/cmake_install.cmake")
+  include("I:/ipg/build/modules/hostap/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/mcuboot/cmake_install.cmake")
+  include("I:/ipg/build/modules/mcuboot/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/mbedtls/cmake_install.cmake")
+  include("I:/ipg/build/modules/mbedtls/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/trusted-firmware-m/cmake_install.cmake")
+  include("I:/ipg/build/modules/trusted-firmware-m/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/cjson/cmake_install.cmake")
+  include("I:/ipg/build/modules/cjson/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/azure-sdk-for-c/cmake_install.cmake")
+  include("I:/ipg/build/modules/azure-sdk-for-c/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/cirrus-logic/cmake_install.cmake")
+  include("I:/ipg/build/modules/cirrus-logic/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/openthread/cmake_install.cmake")
+  include("I:/ipg/build/modules/openthread/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/memfault-firmware-sdk/cmake_install.cmake")
+  include("I:/ipg/build/modules/memfault-firmware-sdk/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/canopennode/cmake_install.cmake")
+  include("I:/ipg/build/modules/canopennode/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/chre/cmake_install.cmake")
+  include("I:/ipg/build/modules/chre/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/cmsis/cmake_install.cmake")
+  include("I:/ipg/build/modules/cmsis/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/fatfs/cmake_install.cmake")
+  include("I:/ipg/build/modules/fatfs/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/hal_nordic/cmake_install.cmake")
+  include("I:/ipg/build/modules/hal_nordic/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/st/cmake_install.cmake")
+  include("I:/ipg/build/modules/st/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/hal_wurthelektronik/cmake_install.cmake")
+  include("I:/ipg/build/modules/hal_wurthelektronik/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/libmetal/cmake_install.cmake")
+  include("I:/ipg/build/modules/libmetal/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/liblc3/cmake_install.cmake")
+  include("I:/ipg/build/modules/liblc3/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/littlefs/cmake_install.cmake")
+  include("I:/ipg/build/modules/littlefs/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/loramac-node/cmake_install.cmake")
+  include("I:/ipg/build/modules/loramac-node/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/lvgl/cmake_install.cmake")
+  include("I:/ipg/build/modules/lvgl/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/lz4/cmake_install.cmake")
+  include("I:/ipg/build/modules/lz4/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/mipi-sys-t/cmake_install.cmake")
+  include("I:/ipg/build/modules/mipi-sys-t/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/nanopb/cmake_install.cmake")
+  include("I:/ipg/build/modules/nanopb/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/nrf_hw_models/cmake_install.cmake")
+  include("I:/ipg/build/modules/nrf_hw_models/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/open-amp/cmake_install.cmake")
+  include("I:/ipg/build/modules/open-amp/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/picolibc/cmake_install.cmake")
+  include("I:/ipg/build/modules/picolibc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/segger/cmake_install.cmake")
+  include("I:/ipg/build/modules/segger/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/tinycrypt/cmake_install.cmake")
+  include("I:/ipg/build/modules/tinycrypt/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/TraceRecorder/cmake_install.cmake")
+  include("I:/ipg/build/modules/TraceRecorder/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/uoscore-uedhoc/cmake_install.cmake")
+  include("I:/ipg/build/modules/uoscore-uedhoc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/zcbor/cmake_install.cmake")
+  include("I:/ipg/build/modules/zcbor/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/zscilib/cmake_install.cmake")
+  include("I:/ipg/build/modules/zscilib/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/nrfxlib/cmake_install.cmake")
+  include("I:/ipg/build/modules/nrfxlib/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/modules/connectedhomeip/cmake_install.cmake")
+  include("I:/ipg/build/modules/connectedhomeip/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/zephyr/kernel/cmake_install.cmake")
+  include("I:/ipg/build/zephyr/kernel/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/zephyr/cmake/flash/cmake_install.cmake")
+  include("I:/ipg/build/zephyr/cmake/flash/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/zephyr/cmake/usage/cmake_install.cmake")
+  include("I:/ipg/build/zephyr/cmake/usage/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/zephyr/cmake/reports/cmake_install.cmake")
+  include("I:/ipg/build/zephyr/cmake/reports/cmake_install.cmake")
 endif()
 

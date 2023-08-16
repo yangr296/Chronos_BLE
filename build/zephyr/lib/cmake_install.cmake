@@ -39,21 +39,21 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/zephyr/lib/libc/cmake_install.cmake")
+  include("I:/ipg/build/zephyr/lib/libc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/zephyr/lib/posix/cmake_install.cmake")
+  include("I:/ipg/build/zephyr/lib/posix/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/zephyr/lib/hash/cmake_install.cmake")
+  include("I:/ipg/build/zephyr/lib/hash/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/zephyr/lib/os/cmake_install.cmake")
+  include("I:/ipg/build/zephyr/lib/os/cmake_install.cmake")
 endif()
 

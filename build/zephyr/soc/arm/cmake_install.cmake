@@ -39,11 +39,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/zephyr/soc/arm/common/cortex_m/cmake_install.cmake")
+  include("I:/ipg/build/zephyr/soc/arm/common/cortex_m/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/tyang296/Nordic/ipg/build/zephyr/soc/arm/nordic_nrf/cmake_install.cmake")
+  include("I:/ipg/build/zephyr/soc/arm/nordic_nrf/cmake_install.cmake")
 endif()
 

@@ -2,8 +2,8 @@
 _region_min_align = 32;
 MEMORY
     {
-    FLASH (rx) : ORIGIN = (0x0 + 0x0), LENGTH = (1024*1K - 0x0)
-    RAM (wx) : ORIGIN = 0x20000000, LENGTH = (256 * 1K)
+    FLASH (rx) : ORIGIN = (0x0 + 0x0), LENGTH = (512*1K - 0x0)
+    RAM (wx) : ORIGIN = 0x20000000, LENGTH = (64 * 1K)
    
     IDT_LIST (wx) : ORIGIN = 0xFFFFF7FF, LENGTH = 2K
     }
@@ -47,7 +47,7 @@ SECTIONS
 . = 0x0;
 . = ALIGN(4);
 . = ALIGN( 1 << LOG2CEIL(4 * 32) );
-. = ALIGN( 1 << LOG2CEIL(4 * (16 + 48)) );
+. = ALIGN( 1 << LOG2CEIL(4 * (16 + 39)) );
 _vector_start = .;
 KEEP(*(.exc_vector_table))
 KEEP(*(".exc_vector_table.*"))
@@ -287,7 +287,7 @@ __ramfunc_load_start = LOADADDR(.ramfunc);
         } > RAM AT > RAM
     _image_ram_end = .;
     _end = .;
-    __kernel_ram_end = 0x20000000 + (256 * 1K);
+    __kernel_ram_end = 0x20000000 + (64 * 1K);
     __kernel_ram_size = __kernel_ram_end - __kernel_ram_start;
    
 /DISCARD/ :

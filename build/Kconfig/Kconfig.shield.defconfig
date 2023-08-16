@@ -1,2 +1,2 @@
-osource "c:/users/tyang296/nordic/ipg/boards/shields/*/Kconfig.defconfig"
+osource "i:/ipg/boards/shields/*/Kconfig.defconfig"
 osource "C:/ncs/v2.4.0/nrf/boards/shields/*/Kconfig.defconfig"

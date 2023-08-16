@@ -39,5 +39,4 @@ config BT_NUS_UART_ASYNC_ADAPTER
 	help
 	  Enables asynchronous adapter for UART drives that supports only
 	  IRQ interface.
-
 endmenu
