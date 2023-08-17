@@ -1,16 +1,16 @@
 import sys
 import math
 
-P1_LOWER = 10
+P1_LOWER = 0
 P1_UPPER = 5000
 # encoding capacity in bits 
 P1_SIZE = 16  
 
-P2_LOWER = 25
+P2_LOWER = 0
 P2_UPPER = 500
 P2_SIZE = 8
 
-P3_LOWER = 20
+P3_LOWER = 0
 P3_UPPER = 200
 P3_SIZE = 8
 

@@ -28,6 +28,7 @@ class BLEMessage:
         self.encode()
        
     def get_encoded(self):
+        self.encode()
         bytes = self.enc_message.to_bytes(4, byteorder='big')
         return bytes
    
@@ -47,7 +48,8 @@ class BLEMessage:
     def encode_p3(self):
         print("----------\nencoding b4")
         #compression 
-        step = MessageHelper.get_step("P3")
+        # step = MessageHelper.get_step("P3")
+        step = 1
         comp_int = self.p3 // step
         print("compression step is %i" %step)
         print("b4 = %i" %self.p3)
@@ -59,7 +61,8 @@ class BLEMessage:
     def encode_p2(self):
         print("----------\nencoding b3")
         # compression 
-        step = MessageHelper.get_step("P2")
+        # step = MessageHelper.get_step("P2")
+        step = 2
         comp_int = self.p2 // step
         print("compression step is %i" %step)
         print("b3 = %i" %comp_int)
@@ -72,7 +75,8 @@ class BLEMessage:
     def encode_p1(self):
         print("----------\nencoding b1 and b2")
         #compression 
-        step = MessageHelper.get_step("P1")
+        # step = MessageHelper.get_step("P1")
+        step = 1
         comp_int = self.p1 // step
         print("compression step is %i" %step)
         # print("comp_int in hex %s" %hex(comp_int))
@@ -86,6 +90,22 @@ class BLEMessage:
         print("b1 = %i, b2 = %i" %(upper, lower))
         self.b1 = chr(upper)
         self.b2 = chr(lower)
+    
+    #setter
+    def set_amp(self, x):
+        self.p1 = x
+        
+    #setter 
+    def set_pw(self, x):
+        self.p2 = x
+        
+    #setter
+    def set_fq(self, x):
+        self.p3 = x
+        
+    #setter
+    def set_status(self, x):
+        self.p4 = x
         
     # not accouting for the most significant bit 
     def print_param(self):
