@@ -600,7 +600,6 @@ static void configure_gpio(void)
 
 void main(void)
 {
-	int blink_status = 0;
 	int err = 0;
 	// uint8_t *out = k_malloc(sizeof(uint8_t));
 	my_message = k_malloc(sizeof(message*));

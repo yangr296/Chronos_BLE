@@ -20,6 +20,10 @@ config BT_NUS_UART_BUFFER_SIZE
 	help
 	  Size of the payload buffer in each RX and TX FIFO element
 
+config BLE_NUS_BLE_OBSERVER_PRIO
+	int "priority level"
+	default -1
+
 config BT_NUS_SECURITY_ENABLED
 	bool "Enable security"
 	default y
