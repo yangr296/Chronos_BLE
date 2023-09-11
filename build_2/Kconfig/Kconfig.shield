@@ -1,0 +1,2 @@
+osource "c:/users/richa/ipg/boards/shields/*/Kconfig.shield"
+osource "C:/ncs/main/nrf/boards/shields/*/Kconfig.shield"

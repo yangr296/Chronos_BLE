@@ -74,6 +74,9 @@ void decode(char b1, char b2, char b3, char b4){
     char amp_mask = 0x1F;
     char status_mask = 0xE0;
 	if (b1 == 0 && b2 == 0 && b3==0 && b4 == 0){
+		*my_message->stim_status = 0;
+	}
+	else if (b1 == 0 && b2 == 0 && b3==0 && b4 == 1){
 		*my_message->stim_status = 1;
 	}
 	else{
