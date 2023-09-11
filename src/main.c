@@ -73,11 +73,16 @@ static message *my_message;
 void decode(char b1, char b2, char b3, char b4){
     char amp_mask = 0x1F;
     char status_mask = 0xE0;
+	if (b1 == 0 && b2 == 0 && b3==0 && b4 == 0){
+		*my_message->stim_status = 1;
+	}
+	else{
+		*my_message->stim_amp = (b1 & amp_mask) * 256 + b2;
+		*my_message->stim_pw = b3 * 2;
+		*my_message->stim_freq = b4;
+		*my_message->stim_status = ((b1 & status_mask) >> 7);
+	}
 
-    *my_message->stim_amp = (b1 & amp_mask) * 256 + b2;
-    *my_message->stim_pw = b3 * 2;
-    *my_message->stim_freq = b4;
-    *my_message->stim_status = ((b1 & status_mask) >> 7);
 }
 
 /* Declare the FIFOs */
